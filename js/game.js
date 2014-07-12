@@ -5,6 +5,7 @@ $(document).ready(function(){
 });
 
 var bg;
+var bricks;
 
 function preload() {
 
@@ -26,11 +27,12 @@ function create() {
     bg = game.add.tileSprite(0, 0, 800, 600, 'starfield');
 
     // create bricks
+    bricks = game.add.group();
     for (var y = 0; y < 4; y++)
     {
         for (var x = 0; x < 15; x++)
         {
-            game.add.sprite(120 + (x * 36), 100 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
+            bricks.create(120 + (x * 36), 100 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
         }
     }
 
