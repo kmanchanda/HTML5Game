@@ -11,6 +11,8 @@ var ball;
 
 var ballOnPaddle = true;
 
+var scoreText;
+
 function preload() {
 
     //  You can fill the preloader with as many assets as your game requires
@@ -61,6 +63,9 @@ function create() {
     
     // add input handler
     game.input.onDown.add(releaseBall, this);
+
+    // scoring
+    scoreText = game.add.text(32, 550, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
 
 }
 
