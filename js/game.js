@@ -124,6 +124,9 @@ function ballHitPaddle (_ball, _paddle) {
 }
 
 function ballLost () {
+    lives--;
+    livesText.text = 'lives: ' + lives;
+    
     resetBall();
 }
 
