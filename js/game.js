@@ -24,6 +24,8 @@ function preload() {
 
 function create() {
 
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+
     //  This creates a simple sprite that is using our loaded image and
     //  displays it on-screen
     bg = game.add.tileSprite(0, 0, 800, 600, 'starfield');
@@ -45,5 +47,8 @@ function create() {
     // create ball
     ball = game.add.sprite(game.world.centerX, paddle.y - 16, 'breakout', 'ball_1.png');
     ball.anchor.setTo(0.5, 0.5);
+
+    game.physics.enable(ball, Phaser.Physics.ARCADE);
+    ball.body.velocity.y = -300;
 
 }
