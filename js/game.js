@@ -1,7 +1,7 @@
 var game;
 
 $(document).ready(function(){
-  game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create });
+  game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update });
 });
 
 var bg;
@@ -38,7 +38,8 @@ function create() {
     {
         for (var x = 0; x < 15; x++)
         {
-            bricks.create(120 + (x * 36), 100 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
+            var brick = bricks.create(120 + (x * 36), 100 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
+            game.physics.enable(brick, Phaser.Physics.ARCADE);
         }
     }
 
@@ -57,6 +58,10 @@ function create() {
     // add input handler
     game.input.onDown.add(releaseBall, this);
 
+}
+
+function update () {
+    game.physics.arcade.collide(ball, bricks, null, null, this);
 }
 
 function releaseBall () {
