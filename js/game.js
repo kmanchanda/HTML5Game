@@ -24,6 +24,14 @@ function create() {
     //  This creates a simple sprite that is using our loaded image and
     //  displays it on-screen
     bg = game.add.tileSprite(0, 0, 800, 600, 'starfield');
-    bg = game.add.sprite(100, 100, 'breakout', 'brick_3_1.png');
+
+    // create bricks
+    for (var y = 0; y < 4; y++)
+    {
+        for (var x = 0; x < 15; x++)
+        {
+            game.add.sprite(120 + (x * 36), 100 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
+        }
+    }
 
 }
