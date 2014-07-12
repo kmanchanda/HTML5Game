@@ -65,6 +65,14 @@ function create() {
 }
 
 function update () {
+    // move paddle based on mouse input
+    paddle.body.x = game.input.x;
+    if (ballOnPaddle)
+    {
+        ball.body.x = paddle.x;
+    }
+
+    // collision checks
     game.physics.arcade.collide(ball, paddle, null, null, this);
     game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
 }
