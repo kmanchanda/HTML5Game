@@ -4,6 +4,7 @@ $(document).ready(function(){
   game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create });
 });
 
+var bg;
 
 function preload() {
 
@@ -21,6 +22,6 @@ function create() {
 
     //  This creates a simple sprite that is using our loaded image and
     //  displays it on-screen
-    game.add.sprite(0, 0, 'starfield');
+    bg = game.add.tileSprite(0, 0, 800, 600, 'starfield');
 
 }
