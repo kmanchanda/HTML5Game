@@ -12,6 +12,7 @@ var ball;
 var ballOnPaddle = true;
 var score = 0;
 var lives = 3;
+var gameOverFlag = false;
 
 var scoreText;
 var livesText;
@@ -95,7 +96,11 @@ function update () {
 
 function releaseBall () {
     console.log('[input event] click');
-    if (ballOnPaddle)
+    if (gameOverFlag) {
+        gameOverFlag = false;
+        resetGame();
+    }
+    else if (ballOnPaddle)
     {
         ballOnPaddle = false;
         ball.body.velocity.x = -75;
@@ -146,4 +151,14 @@ function resetBall () {
 function gameOver () {
     introText.text = 'Game Over !!!';
     introText.visible = true;
+    gameOverFlag = true;
+}
+
+function resetGame () {
+    score = 0;
+    lives = 3;
+    introText.text = '- click to start -';
+    scoreText.text = 'score: ' + score;
+    livesText.text = 'lives: ' + lives;
+    bricks.callAll('revive');
 }
