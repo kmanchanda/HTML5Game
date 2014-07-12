@@ -29,6 +29,8 @@ function preload() {
     game.load.image('starfield', 'assets/starfield.jpg');
     game.load.atlas('breakout', 'assets/breakout.png', 'assets/breakout.json');
 
+    game.load.audio('boden', ['assets/bodenstaendig_2000_in_rock_4bit.mp3', 'assets/bodenstaendig_2000_in_rock_4bit.ogg']);
+
 }
 
 function create() {
@@ -81,6 +83,9 @@ function create() {
     introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
     introText.anchor.setTo(0.5, 0.5);
 
+    // background music
+    music = game.add.audio('boden');
+    music.play();
 }
 
 function update () {
