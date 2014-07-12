@@ -11,8 +11,10 @@ var ball;
 
 var ballOnPaddle = true;
 var score = 0;
+var lives = 3;
 
 var scoreText;
+var livesText;
 
 function preload() {
 
@@ -71,6 +73,7 @@ function create() {
 
     // scoring
     scoreText = game.add.text(32, 550, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
+    livesText = game.add.text(680, 550, 'lives: ' + lives, { font: "20px Arial", fill: "#ffffff", align: "left" });
 
 }
 
