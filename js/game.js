@@ -10,6 +10,7 @@ var paddle;
 var ball;
 
 var ballOnPaddle = true;
+var score = 0;
 
 var scoreText;
 
@@ -94,6 +95,9 @@ function releaseBall () {
 
 function ballHitBrick (_ball, _brick) {
     _brick.kill();
+
+    score += 10;
+    scoreText.text = 'score: ' + score;
 }
 
 function ballHitPaddle (_ball, _paddle) {
