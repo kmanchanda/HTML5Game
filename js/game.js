@@ -6,6 +6,7 @@ $(document).ready(function(){
 
 var bg;
 var bricks;
+var paddle;
 
 function preload() {
 
@@ -35,5 +36,9 @@ function create() {
             bricks.create(120 + (x * 36), 100 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
         }
     }
+
+    // create paddle
+    paddle = game.add.sprite(game.world.centerX, 500, 'breakout', 'paddle_big.png');
+    paddle.anchor.setTo(0.5, 0.5);
 
 }
