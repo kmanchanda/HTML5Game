@@ -30,6 +30,7 @@ function preload() {
     game.load.atlas('breakout', 'assets/breakout.png', 'assets/breakout.json');
 
     game.load.audio('boden', ['assets/bodenstaendig_2000_in_rock_4bit.mp3', 'assets/bodenstaendig_2000_in_rock_4bit.ogg']);
+    game.load.audio('squit', ['assets/squit.mp3', 'assets/squit.ogg']);
 
 }
 
@@ -84,8 +85,8 @@ function create() {
     introText.anchor.setTo(0.5, 0.5);
 
     // background music
-    music = game.add.audio('boden');
-    music.play();
+    var music = game.add.audio('boden');
+    music.play('', 0, 1, true);
 }
 
 function update () {
@@ -122,6 +123,9 @@ function ballHitBrick (_ball, _brick) {
 
     score += 10;
     scoreText.text = 'score: ' + score;
+
+    var music = game.add.audio('squit');
+    music.play();
 
     //  are all bricks finished - start new level
     if (bricks.countLiving() === 0)
