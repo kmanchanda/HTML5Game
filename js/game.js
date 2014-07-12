@@ -15,6 +15,7 @@ var lives = 3;
 
 var scoreText;
 var livesText;
+var introText;
 
 function preload() {
 
@@ -74,6 +75,8 @@ function create() {
     // scoring
     scoreText = game.add.text(32, 550, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
     livesText = game.add.text(680, 550, 'lives: ' + lives, { font: "20px Arial", fill: "#ffffff", align: "left" });
+    introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
+    introText.anchor.setTo(0.5, 0.5);
 
 }
 
@@ -97,6 +100,7 @@ function releaseBall () {
         ballOnPaddle = false;
         ball.body.velocity.x = -75;
         ball.body.velocity.y = -300;
+        introText.visible = false;
     }
 }
 
@@ -126,11 +130,20 @@ function ballHitPaddle (_ball, _paddle) {
 function ballLost () {
     lives--;
     livesText.text = 'lives: ' + lives;
-    
+
     resetBall();
+
+    if(lives === 0) {
+        gameOver();
+    }
 }
 
 function resetBall () {
     ballOnPaddle = true;
     ball.reset(paddle.x + 16, paddle.y - 16);
+}
+
+function gameOver () {
+    introText.text = 'Game Over !!!';
+    introText.visible = true;
 }
