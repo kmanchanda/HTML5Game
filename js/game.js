@@ -66,7 +66,7 @@ function create() {
 
 function update () {
     game.physics.arcade.collide(ball, paddle, null, null, this);
-    game.physics.arcade.collide(ball, bricks, null, null, this);
+    game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
 }
 
 function releaseBall () {
@@ -77,4 +77,8 @@ function releaseBall () {
         ball.body.velocity.x = -75;
         ball.body.velocity.y = -300;
     }
+}
+
+function ballHitBrick (_ball, _brick) {
+    _brick.kill();
 }
