@@ -49,6 +49,14 @@ function create() {
     ball.anchor.setTo(0.5, 0.5);
 
     game.physics.enable(ball, Phaser.Physics.ARCADE);
-    ball.body.velocity.y = -300;
+    
+    // add input handler
+    game.input.onDown.add(releaseBall, this);
 
+}
+
+function releaseBall () {
+    console.log('[input event] click');
+    ball.body.velocity.x = -75;
+    ball.body.velocity.y = -300;
 }
