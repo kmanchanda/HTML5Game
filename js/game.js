@@ -66,7 +66,7 @@ function create() {
 
 function update () {
     // move paddle based on mouse input
-    paddle.body.x = game.input.x;
+    paddle.body.x = Math.min(game.input.x, game.width - paddle.width);
     if (ballOnPaddle)
     {
         ball.body.x = paddle.x;
