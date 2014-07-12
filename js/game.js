@@ -30,6 +30,7 @@ function preload() {
 function create() {
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.physics.arcade.checkCollision.down = false;
 
     //  This creates a simple sprite that is using our loaded image and
     //  displays it on-screen
@@ -61,6 +62,9 @@ function create() {
     game.physics.enable(ball, Phaser.Physics.ARCADE);
     ball.body.collideWorldBounds = true;
     ball.body.bounce.set(1);
+    
+    ball.checkWorldBounds = true;
+    ball.events.onOutOfBounds.add(ballLost, this);
     
     // add input handler
     game.input.onDown.add(releaseBall, this);
@@ -114,4 +118,13 @@ function ballHitPaddle (_ball, _paddle) {
         // for center impact, add a random velocity shift
         _ball.body.velocity.x = 2 + Math.random() * 8;
     }
+}
+
+function ballLost () {
+    resetBall();
+}
+
+function resetBall () {
+    ballOnPaddle = true;
+    ball.reset(paddle.x + 16, paddle.y - 16);
 }
