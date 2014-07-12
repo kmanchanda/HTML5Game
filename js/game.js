@@ -117,6 +117,18 @@ function ballHitBrick (_ball, _brick) {
 
     score += 10;
     scoreText.text = 'score: ' + score;
+
+    //  are all bricks finished - start new level
+    if (bricks.countLiving() === 0)
+    {
+        score += 1000;
+        scoreText.text = 'score: ' + score;
+        introText.text = '- Next Level -';
+        introText.visible = true;
+
+        resetBall ();
+        bricks.callAll('revive');
+    }
 }
 
 function ballHitPaddle (_ball, _paddle) {
