@@ -9,6 +9,8 @@ var bricks;
 var paddle;
 var ball;
 
+var ballOnPaddle = true;
+
 function preload() {
 
     //  You can fill the preloader with as many assets as your game requires
@@ -57,6 +59,10 @@ function create() {
 
 function releaseBall () {
     console.log('[input event] click');
-    ball.body.velocity.x = -75;
-    ball.body.velocity.y = -300;
+    if (ballOnPaddle)
+    {
+        ballOnPaddle = false;
+        ball.body.velocity.x = -75;
+        ball.body.velocity.y = -300;
+    }
 }
