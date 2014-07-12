@@ -73,7 +73,7 @@ function update () {
     }
 
     // collision checks
-    game.physics.arcade.collide(ball, paddle, null, null, this);
+    game.physics.arcade.collide(ball, paddle, ballHitPaddle, null, this);
     game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
 }
 
@@ -89,4 +89,20 @@ function releaseBall () {
 
 function ballHitBrick (_ball, _brick) {
     _brick.kill();
+}
+
+function ballHitPaddle (_ball, _paddle) {
+    // where on the paddle did the ball hit
+    var diff = _paddle.x - _ball.x;
+
+    if (diff !== 0)
+    {
+        // for left/right side impact, give a increase the angle of bounce
+        _ball.body.velocity.x = -10 * diff;
+    }
+    else
+    {
+        // for center impact, add a random velocity shift
+        _ball.body.velocity.x = 2 + Math.random() * 8;
+    }
 }
