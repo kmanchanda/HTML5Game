@@ -40,6 +40,7 @@ function create() {
         {
             var brick = bricks.create(120 + (x * 36), 100 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
             game.physics.enable(brick, Phaser.Physics.ARCADE);
+            brick.body.immovable = true;
         }
     }
 
