@@ -52,6 +52,7 @@ function create() {
 
     game.physics.enable(ball, Phaser.Physics.ARCADE);
     ball.body.collideWorldBounds = true;
+    ball.body.bounce.set(1);
     
     // add input handler
     game.input.onDown.add(releaseBall, this);
