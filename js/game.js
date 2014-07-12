@@ -69,6 +69,8 @@ function create() {
     
     ball.checkWorldBounds = true;
     ball.events.onOutOfBounds.add(ballLost, this);
+
+    ball.animations.add('spin', [ 'ball_1.png', 'ball_2.png', 'ball_3.png', 'ball_4.png', 'ball_5.png' ], 50, true);
     
     // add input handler
     game.input.onDown.add(releaseBall, this);
@@ -106,6 +108,7 @@ function releaseBall () {
         ball.body.velocity.x = -75;
         ball.body.velocity.y = -300;
         introText.visible = false;
+        ball.animations.play('spin');
     }
 }
 
@@ -146,6 +149,7 @@ function ballLost () {
 function resetBall () {
     ballOnPaddle = true;
     ball.reset(paddle.x + 16, paddle.y - 16);
+    ball.animations.stop();
 }
 
 function gameOver () {
