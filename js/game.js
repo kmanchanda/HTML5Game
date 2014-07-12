@@ -7,6 +7,7 @@ $(document).ready(function(){
 var bg;
 var bricks;
 var paddle;
+var ball;
 
 function preload() {
 
@@ -40,5 +41,9 @@ function create() {
     // create paddle
     paddle = game.add.sprite(game.world.centerX, 500, 'breakout', 'paddle_big.png');
     paddle.anchor.setTo(0.5, 0.5);
+
+    // create ball
+    ball = game.add.sprite(game.world.centerX, paddle.y - 16, 'breakout', 'ball_1.png');
+    ball.anchor.setTo(0.5, 0.5);
 
 }
