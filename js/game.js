@@ -5,6 +5,9 @@ $(document).ready(function(){
   $('#mute-button').click(function(){
     game.sound.mute = !game.sound.mute;
   });
+  $('#pause-button').click(function(){
+    game.paused = !game.paused;
+  });
 });
 
 var bg;
