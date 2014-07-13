@@ -1,7 +1,7 @@
 var game;
 
 $(document).ready(function(){
-  game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update });
+  game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
   $('#mute-button').click(function(){
     game.sound.mute = !game.sound.mute;
   });
@@ -106,6 +106,10 @@ function update () {
     // collision checks
     game.physics.arcade.collide(ball, paddle, ballHitPaddle, null, this);
     game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
+}
+
+function render () {
+    game.debug.text('Mouse Position: ' + game.input.x + ' : ' + game.input.y, 20, 20, 'rgb(255,0,0)');
 }
 
 function releaseBall () {
