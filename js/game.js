@@ -2,6 +2,9 @@ var game;
 
 $(document).ready(function(){
   game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update });
+  $('#mute-button').click(function(){
+    game.sound.mute = !game.sound.mute;
+  });
 });
 
 var bg;
