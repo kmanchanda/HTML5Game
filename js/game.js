@@ -41,6 +41,7 @@ function preload() {
 }
 
 function create() {
+    game.time.advancedTiming = true;
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.checkCollision.down = false;
@@ -109,7 +110,7 @@ function update () {
 }
 
 function render () {
-    game.debug.text('Mouse Position: ' + game.input.x + ' : ' + game.input.y, 20, 20, 'rgb(255,0,0)');
+    game.debug.text('FPS: ' + game.time.fps, 20, 20, 'rgb(255,0,0)');
 }
 
 function releaseBall () {
